@@ -1,7 +1,7 @@
 ---
-path: /docs/managing-state
+path: /docs/managing-state/
 redirect_from:
-  - /guide/state-containers
+  - /guide/state-containers/
 ---
 
 # Managing state

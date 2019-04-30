@@ -1,7 +1,7 @@
 ---
-path: /docs/accessibility
+path: /docs/accessibility/
 redirect_from:
-  - /guide/accessibility
+  - /guide/accessibility/
 ---
 
 # Accessibility

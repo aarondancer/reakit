@@ -1,7 +1,7 @@
 ---
-path: /docs/tooltip
+path: /docs/tooltip/
 redirect_from:
-  - /components/tooltip
+  - /components/tooltip/
 ---
 
 # Tooltip

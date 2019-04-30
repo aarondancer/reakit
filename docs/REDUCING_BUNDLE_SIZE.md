@@ -1,7 +1,7 @@
 ---
-path: /docs/reducing-bundle-size
+path: /docs/reducing-bundle-size/
 redirect_from:
-  - /guide/bundle-size
+  - /guide/bundle-size/
 ---
 
 # Reducing bundle size
@@ -16,7 +16,7 @@ If you're using modern tooling, such as [webpack](https://webpack.js.org/), [cre
 >
 > [Learn more](https://medium.com/@netxm/what-is-tree-shaking-de7c6be5cadd)
 
-In the below example, only [Button](../packages/reakit/src/Button/Button.md), [Popover](../packages/reakit/src/Popover/Popover.md) and their dependencies will be included in your final bundle:
+In the below example, only [Button](/docs/Button), [Popover](/docs/Popover) and their dependencies will be included in your final bundle:
 
 ```js static
 import { Button, Popover } from "reakit";

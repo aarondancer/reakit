@@ -1,5 +1,5 @@
 ---
-path: /docs/rover
+path: /docs/rover/
 ---
 
 # Rover

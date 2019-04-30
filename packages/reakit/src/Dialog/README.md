@@ -1,12 +1,12 @@
 ---
-path: /docs/dialog
+path: /docs/dialog/
 redirect_from:
-  - /components/overlay
-  - /components/overlay/overlaycontainer
-  - /components/overlay/overlayhide
-  - /components/overlay/overlayshow
-  - /components/overlay/overlaytoggle
-  - /components/backdrop
+  - /components/overlay/
+  - /components/overlay/overlaycontainer/
+  - /components/overlay/overlayhide/
+  - /components/overlay/overlayshow/
+  - /components/overlay/overlaytoggle/
+  - /components/backdrop/
 ---
 
 # Dialog (Modal)

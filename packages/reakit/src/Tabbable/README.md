@@ -1,5 +1,5 @@
 ---
-path: /docs/tabbable
+path: /docs/tabbable/
 ---
 
 # Tabbable

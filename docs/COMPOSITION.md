@@ -1,7 +1,7 @@
 ---
-path: /docs/composition
+path: /docs/composition/
 redirect_from:
-  - /guide/composition
+  - /guide/composition/
 ---
 
 # Composition

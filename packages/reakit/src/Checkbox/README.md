@@ -1,5 +1,5 @@
 ---
-path: /docs/checkbox
+path: /docs/checkbox/
 ---
 
 # Checkbox

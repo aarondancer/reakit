@@ -1,6 +1,6 @@
 import * as React from "react";
 import { injectGlobal } from "emotion";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import RehypeReact from "rehype-react";
 import {
   PlaygroundPreview,
@@ -8,14 +8,22 @@ import {
   usePlaygroundState
 } from "reakit-playground";
 import createUseContext from "constate";
+import kebabCase from "lodash/kebabCase";
 import { FaUniversalAccess } from "react-icons/fa";
+import { VisuallyHidden, Button } from "reakit";
 import CoreLayout from "../components/CoreLayout";
 import FiraCodeBold from "../fonts/FiraCode-Bold.woff";
 import FiraCodeLight from "../fonts/FiraCode-Light.woff";
 import FiraCodeMedium from "../fonts/FiraCode-Medium.woff";
 import FiraCodeRegular from "../fonts/FiraCode-Regular.woff";
+import DocsNavigation from "../components/DocsNavigation";
 
 injectGlobal`
+  body {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont,
+      "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
   @font-face {
     font-family: "Fira Code";
     src: url(${FiraCodeLight});
@@ -42,22 +50,26 @@ injectGlobal`
   }
   .CodeMirror {
     font-family: "Fira Code", monospace !important;
-    font-size: 1em !important;
+    font-size: 15px !important;
   }
 `;
 
 type DocsProps = {
+  location: {
+    pathname: string;
+  };
+  pageContext: {
+    sourceUrl: string;
+    readmeUrl: string;
+  };
   data: {
     markdownRemark: {
       title: string;
       htmlAst: object;
-      headings: Array<{
-        value: string;
-        depth: number;
-      }>;
+      tableOfContents: string;
       frontmatter: {
-        title: string;
         path: string;
+        experimental: boolean;
       };
     };
   };
@@ -88,6 +100,16 @@ function getChildrenCode(props: { children?: React.ReactNode }) {
 const { Compiler: renderAst } = new RehypeReact({
   createElement: React.createElement,
   components: {
+    a: ({ href, ...props }: React.AnchorHTMLAttributes<any>) => {
+      if (href && !/^(http|www|\/\/|#)/.test(href)) {
+        return <Link to={href} {...props} />;
+      }
+      return (
+        <a href={href} {...props}>
+          {props.children}
+        </a>
+      );
+    },
     pre: (props: React.HTMLAttributes<any>) => {
       const codeElement = getChildrenCode(props);
       if (codeElement) {
@@ -142,12 +164,32 @@ const { Compiler: renderAst } = new RehypeReact({
   }
 });
 
-function Comp({ data }: DocsProps) {
+function Comp({ data, location, pageContext }: DocsProps) {
   const {
-    markdownRemark: { title, htmlAst }
+    markdownRemark: { title, htmlAst, tableOfContents }
   } = data;
   return (
     <>
+      <div style={{ width: 200, float: "left" }}>
+        <DocsNavigation />
+      </div>
+      <VisuallyHidden id={`${kebabCase(title)}-subnav`}>
+        {title} sections
+      </VisuallyHidden>
+      <Button as="a" href={pageContext.sourceUrl}>
+        View source on GitHub
+      </Button>
+      <Button as="a" href={pageContext.readmeUrl}>
+        Edit this page
+      </Button>
+      <nav
+        aria-labelledby={`${kebabCase(title)}-subnav`}
+        dangerouslySetInnerHTML={{
+          __html: tableOfContents
+            .replace(/(<\/?p>)/gim, "")
+            .replace(new RegExp(`${location.pathname}/?`, "gim"), "")
+        }}
+      />
       <h1>{title}</h1>
       {renderAst(htmlAst)}
     </>
@@ -167,12 +209,8 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       title
       htmlAst
-      headings {
-        value
-        depth
-      }
+      tableOfContents(pathToSlugField: "frontmatter.path")
       frontmatter {
-        title
         path
       }
     }

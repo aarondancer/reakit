@@ -1,7 +1,7 @@
 ---
-path: /docs/button
+path: /docs/button/
 redirect_from:
-  - /components/button
+  - /components/button/
 ---
 
 # Button

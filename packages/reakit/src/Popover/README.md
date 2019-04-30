@@ -1,11 +1,11 @@
 ---
-path: /docs/popover
+path: /docs/popover/
 redirect_from:
-  - /components/popover
-  - /components/popover/popovercontainer
-  - /components/popover/popoverhide
-  - /components/popover/popovershow
-  - /components/popover/popovertoggle
+  - /components/popover/
+  - /components/popover/popovercontainer/
+  - /components/popover/popoverhide/
+  - /components/popover/popovershow/
+  - /components/popover/popovertoggle/
 ---
 
 # Popover

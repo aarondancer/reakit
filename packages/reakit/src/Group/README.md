@@ -1,8 +1,8 @@
 ---
-path: /docs/group
+path: /docs/group/
 redirect_from:
-  - /components/group
-  - /components/group/groupitem
+  - /components/group/
+  - /components/group/groupitem/
 ---
 
 # Group

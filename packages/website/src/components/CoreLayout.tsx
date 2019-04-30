@@ -6,11 +6,7 @@ import * as playgroundSystem from "reakit-playground/system";
 Provider.unstable_use(bootstrapSystem, playgroundSystem);
 
 function CoreLayout(props: { children: React.ReactNode }) {
-  return (
-    <React.StrictMode>
-      <Provider>{props.children}</Provider>
-    </React.StrictMode>
-  );
+  return <Provider>{props.children}</Provider>;
 }
 
 export default CoreLayout;

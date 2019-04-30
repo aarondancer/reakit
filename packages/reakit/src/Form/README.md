@@ -1,10 +1,10 @@
 ---
-path: /docs/form
+path: /docs/form/
 experimental: true
 redirect_from:
-  - /components/field
-  - /components/input
-  - /components/label
+  - /components/field/
+  - /components/input/
+  - /components/label/
 ---
 
 # Form

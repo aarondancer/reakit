@@ -1,12 +1,12 @@
 ---
-path: /docs/tab
+path: /docs/tab/
 redirect_from:
-  - /components/tabs
-  - /components/tabs/tabscontainer
-  - /components/tabs/tabsnext
-  - /components/tabs/tabspanel
-  - /components/tabs/tabsprevious
-  - /components/tabs/tabstab
+  - /components/tabs/
+  - /components/tabs/tabscontainer/
+  - /components/tabs/tabsnext/
+  - /components/tabs/tabspanel/
+  - /components/tabs/tabsprevious/
+  - /components/tabs/tabstab/
 ---
 
 # Tab

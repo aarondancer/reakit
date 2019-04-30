@@ -1,7 +1,7 @@
 ---
-path: /docs/portal
+path: /docs/portal/
 redirect_from:
-  - /components/portal
+  - /components/portal/
 ---
 
 # Portal

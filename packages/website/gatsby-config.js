@@ -61,6 +61,16 @@ module.exports = {
       }
     },
     "gatsby-plugin-typescript",
-    "gatsby-plugin-emotion"
+    "gatsby-plugin-emotion",
+    "gatsby-transformer-yaml",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "data",
+        path: `${__dirname}/src/data/`
+      }
+    },
+    "gatsby-plugin-meta-redirect",
+    "gatsby-plugin-netlify"
   ]
 };

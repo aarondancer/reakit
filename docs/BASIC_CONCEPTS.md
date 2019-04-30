@@ -1,5 +1,5 @@
 ---
-path: /docs/basic-concepts
+path: /docs/basic-concepts/
 ---
 
 # Basic concepts

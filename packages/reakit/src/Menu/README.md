@@ -1,5 +1,5 @@
 ---
-path: /docs/menu
+path: /docs/menu/
 ---
 
 # Menu

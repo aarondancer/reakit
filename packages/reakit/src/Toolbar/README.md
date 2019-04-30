@@ -1,7 +1,7 @@
 ---
-path: /docs/toolbar
+path: /docs/toolbar/
 redirect_from:
-  - /components/toolbar
+  - /components/toolbar/
 ---
 
 # Toolbar
