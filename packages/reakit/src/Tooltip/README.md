@@ -14,7 +14,7 @@ redirect_from:
 npm install reakit
 ```
 
-Learn more in [Get started](/docs/get-started).
+Learn more in [Get started](/docs/get-started/).
 
 ## Usage
 
@@ -40,15 +40,15 @@ function Example() {
 - `Tooltip` has role `tooltip`.
 - `TooltipReference` has `aria-describedby` referring to `Tooltip`.
 
-Learn more in [Accessibility](/docs/accessibility).
+Learn more in [Accessibility](/docs/accessibility/).
 
 ## Composition
 
-- `Tooltip` uses [Hidden](/docs/hidden).
-- `TooltipArrow` uses [PopoverArrow](/docs/popover).
-- `TooltipReference` uses [Box](/docs/box).
+- `Tooltip` uses [Hidden](/docs/hidden/).
+- `TooltipArrow` uses [PopoverArrow](/docs/popover/).
+- `TooltipReference` uses [Box](/docs/box/).
 
-Learn more in [Composition](/docs/composition#props-hooks).
+Learn more in [Composition](/docs/composition/#props-hooks).
 
 ## Props
 

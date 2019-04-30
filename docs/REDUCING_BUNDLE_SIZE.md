@@ -16,7 +16,7 @@ If you're using modern tooling, such as [webpack](https://webpack.js.org/), [cre
 >
 > [Learn more](https://medium.com/@netxm/what-is-tree-shaking-de7c6be5cadd)
 
-In the below example, only [Button](/docs/Button), [Popover](/docs/Popover) and their dependencies will be included in your final bundle:
+In the below example, only [Button](/docs/button/), [Popover](/docs/popover/) and their dependencies will be included in your final bundle:
 
 ```js static
 import { Button, Popover } from "reakit";

@@ -12,7 +12,7 @@ path: /docs/checkbox/
 npm install reakit
 ```
 
-Learn more in [Get started](/docs/get-started).
+Learn more in [Get started](/docs/get-started/).
 
 ## Usage
 
@@ -125,13 +125,13 @@ function Example() {
 - When not checked, `Checkbox` has `aria-checked` set to `false`.
 - When partially checked, `Checkbox` has `aria-checked` set to `mixed`.
 
-Learn more in [Accessibility](/docs/accessibility).
+Learn more in [Accessibility](/docs/accessibility/).
 
 ## Composition
 
-- `Checkbox` uses [Tabbable](/docs/tabbable), and is used by [FormCheckbox](/docs/form) and [MenuItemCheckbox](/docs/menu).
+- `Checkbox` uses [Tabbable](/docs/tabbable/), and is used by [FormCheckbox](/docs/form/) and [MenuItemCheckbox](/docs/menu/).
 
-Learn more in [Composition](/docs/composition#props-hooks).
+Learn more in [Composition](/docs/composition/#props-hooks).
 
 ## Props
 

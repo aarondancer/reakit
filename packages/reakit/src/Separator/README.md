@@ -14,7 +14,7 @@ redirect_from:
 npm install reakit
 ```
 
-Learn more in [Get started](/docs/get-started).
+Learn more in [Get started](/docs/get-started/).
 
 ## Usage
 
@@ -30,13 +30,13 @@ function Example() {
 
 - `Separator` has role `separator`.
 
-Learn more in [Accessibility](/docs/accessibility).
+Learn more in [Accessibility](/docs/accessibility/).
 
 ## Composition
 
-- `Separator` uses [Box](/docs/box), and is used by [MenuSeparator](/docs/menu) and [ToolbarSeparator](/docs/toolbar).
+- `Separator` uses [Box](/docs/box/), and is used by [MenuSeparator](/docs/menu/) and [ToolbarSeparator](/docs/toolbar/).
 
-Learn more in [Composition](/docs/composition#props-hooks).
+Learn more in [Composition](/docs/composition/#props-hooks).
 
 ## Props
 

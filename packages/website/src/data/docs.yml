@@ -8,7 +8,6 @@
     - /docs/reducing-bundle-size/
 - section: Components
   paths:
-    - /docs/box/
     - /docs/button/
     - /docs/checkbox/
     - /docs/dialog/
@@ -24,6 +23,7 @@
     - /docs/visually-hidden/
 - section: Abstract components
   paths:
+    - /docs/box/
     - /docs/hidden/
     - /docs/portal/
     - /docs/rover/

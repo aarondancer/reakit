@@ -12,7 +12,7 @@ path: /docs/rover/
 npm install reakit
 ```
 
-Learn more in [Get started](/docs/get-started).
+Learn more in [Get started](/docs/get-started/).
 
 ## Usage
 
@@ -55,13 +55,13 @@ function Example() {
 - Pressing <kbd>Home<kbd> or <kbd>PageUp</kbd> moves focus to the first `Rover`.
 - Pressing <kbd>End<kbd> or <kbd>PageDown</kbd> moves focus to the last `Rover`.
 
-Learn more in [Accessibility](/docs/accessibility).
+Learn more in [Accessibility](/docs/accessibility/).
 
 ## Composition
 
-- `Rover` uses [Tabbable](/docs/tabbable), and is used by [MenuItem](/docs/menu), [Radio](/docs/radio), [Tab](/docs/tab) and [ToolbarItem](/docs/toolbar).
+- `Rover` uses [Tabbable](/docs/tabbable/), and is used by [MenuItem](/docs/menu/), [Radio](/docs/radio/), [Tab](/docs/tab/) and [ToolbarItem](/docs/toolbar/).
 
-Learn more in [Composition](/docs/composition#props-hooks).
+Learn more in [Composition](/docs/composition/#props-hooks).
 
 ## Props
 

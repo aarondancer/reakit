@@ -86,6 +86,14 @@ export type PopoverInitialState = DialogInitialState &
      * Offset between the reference and the popover.
      */
     unstable_gutter?: number;
+    /**
+     * Prevents overflow.
+     */
+    unstable_preventOverflow?: boolean;
+    /**
+     * Prevents overflow.
+     */
+    unstable_boundariesElement?: Popper.Boundary;
   };
 
 export type PopoverStateReturn = PopoverState & PopoverActions;
@@ -98,6 +106,8 @@ export function usePopoverState(
     unstable_flip: flip = true,
     unstable_shift: shift = true,
     unstable_gutter: gutter = 12,
+    unstable_preventOverflow: preventOverflow = true,
+    unstable_boundariesElement: boundariesElement = "scrollParent",
     ...sealed
   } = unstable_useSealedState(initialState);
 
@@ -122,11 +132,13 @@ export function usePopoverState(
       popper.current = new Popper(referenceRef.current, popoverRef.current, {
         placement: originalPlacement,
         eventsEnabled: false,
+
         modifiers: {
           applyStyle: { enabled: false },
           flip: { enabled: flip, padding: 16 },
           shift: { enabled: shift },
-          offset: { offset: `0, ${gutter}` },
+          offset: { enabled: shift, offset: `0, ${gutter}` },
+          preventOverflow: { enabled: preventOverflow, boundariesElement },
           arrow: arrowRef.current
             ? { enabled: true, element: arrowRef.current }
             : undefined,

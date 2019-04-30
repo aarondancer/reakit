@@ -10,7 +10,7 @@ redirect_from:
 
 # Popover
 
-`Popover` is a [non-modal dialog](/docs/dialog#non-modal-dialogs) that floats around its disclosure. It's commonly used for displaying additional rich content on top of something.
+`Popover` is a [non-modal dialog](/docs/dialog/#non-modal-dialogs) that floats around its disclosure. It's commonly used for displaying additional rich content on top of something.
 
 ## Installation
 
@@ -18,7 +18,7 @@ redirect_from:
 npm install reakit
 ```
 
-Learn more in [Get started](/docs/get-started).
+Learn more in [Get started](/docs/get-started/).
 
 ## Usage
 
@@ -46,19 +46,19 @@ function Example() {
 
 ## Accessibility
 
-- `Popover` extends the accessibility features of [Dialog](/docs/dialog#accessibility).
-- `PopoverDisclosure` extends the accessibility features of [DialogDisclosure](/docs/dialog#accessibility).
+- `Popover` extends the accessibility features of [Dialog](/docs/dialog/#accessibility).
+- `PopoverDisclosure` extends the accessibility features of [DialogDisclosure](/docs/dialog/#accessibility).
 
-Learn more in [Accessibility](/docs/accessibility).
+Learn more in [Accessibility](/docs/accessibility/).
 
 ## Composition
 
-- `Popover` uses [Dialog](/docs/dialog), and is used by [Menu](/docs/menu).
-- `PopoverArrow` uses [Box](/docs/box), and is used by [TooltipArrow](/docs/tooltip).
-- `PopoverBackdrop` uses [DialogBackdrop](/docs/dialog).
-- `PopoverDisclosure` uses [DialogDisclosure](/docs/dialog), and is used by [MenuDisclosure](/docs/menu).
+- `Popover` uses [Dialog](/docs/dialog/), and is used by [Menu](/docs/menu/).
+- `PopoverArrow` uses [Box](/docs/box/), and is used by [TooltipArrow](/docs/tooltip/).
+- `PopoverBackdrop` uses [DialogBackdrop](/docs/dialog/).
+- `PopoverDisclosure` uses [DialogDisclosure](/docs/dialog/), and is used by [MenuDisclosure](/docs/menu/).
 
-Learn more in [Composition](/docs/composition#props-hooks).
+Learn more in [Composition](/docs/composition/#props-hooks).
 
 ## Props
 

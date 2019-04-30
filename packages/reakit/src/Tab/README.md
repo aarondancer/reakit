@@ -19,7 +19,7 @@ redirect_from:
 npm install reakit
 ```
 
-Learn more in [Get started](/docs/get-started).
+Learn more in [Get started](/docs/get-started/).
 
 ## Usage
 
@@ -98,21 +98,21 @@ function Example() {
 - `Tab` has role `tab`.
 - `Tab` has `aria-controls` referring to its associated `TabPanel`.
 - The selected `Tab` has `aria-selected` set to `true` and all other `Tab`s have it set to `false`.
-- `Tab` extends the accessibility features of [Rover](/docs/rover#accessibility).
+- `Tab` extends the accessibility features of [Rover](/docs/rover/#accessibility).
 - `TabList` has role `tablist`.
 - `TabList` has `aria-orientation` set to `vertical` or `horizontal` based on the value of the `orientation` option.
 - `TabPanel` has role `tabpanel`.
 - `TabPanel` has `aria-labelledby` referring to its associated `Tab`.
 
-Learn more in [Accessibility](/docs/accessibility).
+Learn more in [Accessibility](/docs/accessibility/).
 
 ## Composition
 
-- `Tab` uses [Rover](/docs/rover).
-- `TabList` uses [Box](/docs/box).
-- `TabPanel` uses [Hidden](/docs/hidden).
+- `Tab` uses [Rover](/docs/rover/).
+- `TabList` uses [Box](/docs/box/).
+- `TabPanel` uses [Hidden](/docs/hidden/).
 
-Learn more in [Composition](/docs/composition#props-hooks).
+Learn more in [Composition](/docs/composition/#props-hooks).
 
 ## Props
 

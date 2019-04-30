@@ -9,39 +9,8 @@ import {
 } from "reakit";
 import kebabCase from "lodash/kebabCase";
 import { css } from "emotion";
+import { usePalette, useLighten, useDarken } from "reakit-system-palette/utils";
 import TestTube from "../icons/TestTube";
-
-const className = css`
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-  li {
-    list-style: none;
-  }
-  a {
-    display: flex;
-    align-items: center;
-    padding: 0.5em 0 0.5em 2em;
-    text-decoration: none;
-    color: black;
-    border-left: 5px solid transparent;
-    cursor: pointer;
-
-    &:hover {
-      color: #6b46c1;
-    }
-
-    &[aria-current="page"] {
-      background-color: #e9d8fd;
-      border-left-color: #9f7aea;
-    }
-
-    svg {
-      margin-left: 0.25em;
-    }
-  }
-`;
 
 type Data = {
   allDocsYaml: {
@@ -62,12 +31,14 @@ type Data = {
 };
 
 function ExperimentalLink(props: GatsbyLinkProps<{}>) {
-  const tooltip = useTooltipState({ placement: "right" });
+  const { unstable_referenceRef, ...tooltip } = useTooltipState({
+    placement: "right"
+  });
   return (
     <>
       <TooltipReference as={Link} {...props} {...tooltip}>
         {props.children}
-        <TestTube role="presentation" />
+        <TestTube role="presentation" ref={unstable_referenceRef} />
       </TooltipReference>
       <Tooltip {...tooltip}>
         <TooltipArrow {...tooltip} /> Experimental
@@ -77,7 +48,6 @@ function ExperimentalLink(props: GatsbyLinkProps<{}>) {
 }
 
 function DocsNavigation() {
-  const baseId = unstable_useId("docs-navigation-");
   const { allDocsYaml, allMarkdownRemark } = useStaticQuery<Data>(graphql`
     query {
       allDocsYaml {
@@ -97,6 +67,58 @@ function DocsNavigation() {
       }
     }
   `);
+  const baseId = unstable_useId("docs-navigation-");
+  const background = usePalette("background");
+  const foreground = usePalette("foreground");
+  const primary = usePalette("primary");
+  const currentBackgroundColor = useLighten(primary, 0.85);
+  const headingColor = useLighten(foreground, 0.5);
+
+  const className = css`
+    background-color: ${background};
+    color: ${foreground};
+    h3 {
+      font-size: 0.85em;
+      text-transform: uppercase;
+      padding: 0 1em;
+      color: ${headingColor};
+      font-weight: 400;
+    }
+    nav {
+      margin: 1.5em 0 0 0;
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+    ul {
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      padding: 0.5em 1em 0.5em 2em;
+      text-decoration: none;
+      color: inherit;
+      border-left: 5px solid transparent;
+      cursor: pointer;
+
+      &:hover {
+        color: ${primary};
+      }
+
+      &[aria-current="page"] {
+        background-color: ${currentBackgroundColor};
+        border-left-color: ${primary};
+      }
+
+      svg {
+        margin-left: 0.25em;
+      }
+    }
+  `;
 
   const getId = (section: string) => `${baseId}-${kebabCase(section)}`;
   const findMeta = (path: string) =>

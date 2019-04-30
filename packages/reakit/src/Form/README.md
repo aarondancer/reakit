@@ -19,7 +19,7 @@ redirect_from:
 npm install reakit
 ```
 
-Learn more in [Get started](/docs/get-started).
+Learn more in [Get started](/docs/get-started/).
 
 ## Usage
 
@@ -121,23 +121,23 @@ function Example() {
 - Clicking on `FormPushButton` will move focus to the first input in the added row.
 - Clicking on `FormRemoveButton` will move focus to the first input in the next row. If there's no next row, it will move focus to the first input in the previous row. If there's no previous row, it will move focus to `FormPushButton`.
 
-Learn more in [Accessibility](/docs/accessibility).
+Learn more in [Accessibility](/docs/accessibility/).
 
 ## Composition
 
-- `Form` uses [Box](/docs/box).
-- `FormCheckbox` uses [Checkbox](/docs/checkbox).
-- `FormGroup` uses [Group](/docs/group).
-- `FormInput` uses [Tabbable](/docs/tabbable).
-- `FormLabel` uses [Box](/docs/box).
-- `FormMessage` uses [Box](/docs/box).
-- `FormPushButton` uses [Button](/docs/button).
-- `FormRadio` uses [Radio](/docs/radio).
+- `Form` uses [Box](/docs/box/).
+- `FormCheckbox` uses [Checkbox](/docs/checkbox/).
+- `FormGroup` uses [Group](/docs/group/).
+- `FormInput` uses [Tabbable](/docs/tabbable/).
+- `FormLabel` uses [Box](/docs/box/).
+- `FormMessage` uses [Box](/docs/box/).
+- `FormPushButton` uses [Button](/docs/button/).
+- `FormRadio` uses [Radio](/docs/radio/).
 - `FormRadioGroup` uses `FormGroup`.
-- `FormRemoveButton` uses [Button](/docs/button).
-- `FormSubmitButton` uses [Button](/docs/button).
+- `FormRemoveButton` uses [Button](/docs/button/).
+- `FormSubmitButton` uses [Button](/docs/button/).
 
-Learn more in [Composition](/docs/composition#props-hooks).
+Learn more in [Composition](/docs/composition/#props-hooks).
 
 ## Props
 

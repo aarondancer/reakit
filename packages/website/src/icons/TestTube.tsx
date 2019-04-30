@@ -1,8 +1,8 @@
 import * as React from "react";
 
-function TestTube(props: React.SVGAttributes<SVGElement>) {
+function TestTube(props: React.SVGAttributes<SVGElement>, ref: React.Ref<any>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 48 48" {...props}>
+    <svg width="1em" height="1em" viewBox="0 0 48 48" {...props} ref={ref}>
       <g fill="#90CAF9">
         <path d="M29 21H19L7.206 35.143c-.049.049-.091.104-.138.153l-.24.269h.02A3.954 3.954 0 0 0 6 38a4 4 0 0 0 4 4h28a4 4 0 0 0 4-4c0-.891-.301-1.705-.793-2.369h.015l-.181-.201c-.092-.108-.181-.219-.283-.316L29 21z" />
         <path d="M19 9h10v13.417H19z" />
@@ -22,4 +22,4 @@ function TestTube(props: React.SVGAttributes<SVGElement>) {
   );
 }
 
-export default TestTube;
+export default React.forwardRef(TestTube);

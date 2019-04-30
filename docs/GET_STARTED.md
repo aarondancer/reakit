@@ -23,7 +23,7 @@ npm install reakit
 
 Play with an example on [CodeSandbox](https://codesandbox.io/s/m4n32vjkoj).
 
-The code below will render an **unstyled** [Button](/docs/button).
+The code below will render an **unstyled** [Button](/docs/button/).
 
 ```jsx static
 import React from "react";
