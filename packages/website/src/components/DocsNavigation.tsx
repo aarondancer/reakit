@@ -40,7 +40,7 @@ function ExperimentalLink(props: GatsbyLinkProps<{}>) {
         {props.children}
         <TestTube role="presentation" ref={unstable_referenceRef} />
       </TooltipReference>
-      <Tooltip {...tooltip}>
+      <Tooltip unstable_system={{ palette: "warning" }} {...tooltip}>
         <TooltipArrow {...tooltip} /> Experimental
       </Tooltip>
     </>

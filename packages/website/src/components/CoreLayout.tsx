@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Provider } from "reakit";
+import { Provider, unstable_mergeSystem } from "reakit";
 import * as bootstrapSystem from "reakit-system-bootstrap";
 import * as playgroundSystem from "reakit-playground/system";
 
-Provider.unstable_use(bootstrapSystem, playgroundSystem, {
+const system = unstable_mergeSystem(bootstrapSystem, playgroundSystem, {
   palette: {
     ...bootstrapSystem.palette,
     primary: "#805AD5"
@@ -11,7 +11,7 @@ Provider.unstable_use(bootstrapSystem, playgroundSystem, {
 });
 
 function CoreLayout(props: { children: React.ReactNode }) {
-  return <Provider>{props.children}</Provider>;
+  return <Provider unstable_system={system}>{props.children}</Provider>;
 }
 
 export default CoreLayout;

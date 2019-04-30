@@ -17,8 +17,6 @@ export type PlaygroundPreviewOptions = PlaygroundStateReturn & {
 
 export type PlaygroundPreviewProps = { className?: string };
 
-Provider.unstable_use(system);
-
 export function PlaygroundPreview({
   code,
   modules,
@@ -59,7 +57,9 @@ export function PlaygroundPreview({
 
   const renderChildren = React.useCallback(
     (children: React.ReactNode) => (
-      <Provider unstable_prefix={`${prefix}-`}>{children}</Provider>
+      <Provider unstable_prefix={`${prefix}-`} unstable_system={system}>
+        {children}
+      </Provider>
     ),
     []
   );
