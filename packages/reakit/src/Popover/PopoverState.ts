@@ -75,6 +75,10 @@ export type PopoverActions = DialogActions & {
 export type PopoverInitialState = DialogInitialState &
   Partial<Pick<PopoverState, "placement">> & {
     /**
+     * TODO: Description
+     */
+    unstable_fixed?: boolean;
+    /**
      * Whether or not flip the popover.
      */
     unstable_flip?: boolean;
@@ -87,11 +91,11 @@ export type PopoverInitialState = DialogInitialState &
      */
     unstable_gutter?: number;
     /**
-     * Prevents overflow.
+     * TODO: Description.
      */
     unstable_preventOverflow?: boolean;
     /**
-     * Prevents overflow.
+     * TODO: Description.
      */
     unstable_boundariesElement?: Popper.Boundary;
   };
@@ -108,6 +112,7 @@ export function usePopoverState(
     unstable_gutter: gutter = 12,
     unstable_preventOverflow: preventOverflow = true,
     unstable_boundariesElement: boundariesElement = "scrollParent",
+    unstable_fixed: fixed = false,
     ...sealed
   } = unstable_useSealedState(initialState);
 
@@ -132,6 +137,7 @@ export function usePopoverState(
       popper.current = new Popper(referenceRef.current, popoverRef.current, {
         placement: originalPlacement,
         eventsEnabled: false,
+        positionFixed: fixed,
 
         modifiers: {
           applyStyle: { enabled: false },

@@ -10,13 +10,11 @@ import {
 import createUseContext from "constate";
 import kebabCase from "lodash/kebabCase";
 import { FaUniversalAccess } from "react-icons/fa";
-import { VisuallyHidden, Button } from "reakit";
-import CoreLayout from "../components/CoreLayout";
+import { Button, Hidden } from "reakit";
 import FiraCodeBold from "../fonts/FiraCode-Bold.woff";
 import FiraCodeLight from "../fonts/FiraCode-Light.woff";
 import FiraCodeMedium from "../fonts/FiraCode-Medium.woff";
 import FiraCodeRegular from "../fonts/FiraCode-Regular.woff";
-import DocsNavigation from "../components/DocsNavigation";
 
 injectGlobal`
   body {
@@ -238,29 +236,12 @@ class AdCarbon extends React.Component {
   }
 }
 
-function Comp({ data, location, pageContext }: DocsProps) {
+export default function Docs({ data, location, pageContext }: DocsProps) {
   const {
     markdownRemark: { title, htmlAst, tableOfContents }
   } = data;
   return (
     <>
-      <div
-        style={{
-          position: "fixed",
-          background: "white",
-          width: 240,
-          zIndex: 900,
-          top: 0,
-          left: 0,
-          overflow: "auto",
-          height: "100vh",
-          padding: 16,
-          paddingBottom: 100,
-          boxSizing: "border-box"
-        }}
-      >
-        <DocsNavigation />
-      </div>
       <div style={{ marginLeft: 260 }}>
         <AdCarbon />
         {/* <div
@@ -274,15 +255,15 @@ function Comp({ data, location, pageContext }: DocsProps) {
           }}
         /> */}
 
-        <VisuallyHidden id={`${kebabCase(title)}-subnav`}>
-          {title} sections
-        </VisuallyHidden>
         <Button as="a" href={pageContext.sourceUrl}>
           View source on GitHub
         </Button>
         <Button as="a" href={pageContext.readmeUrl}>
           Edit this page
         </Button>
+        <div style={{ display: "none" }} id={`${kebabCase(title)}-subnav`}>
+          {title} sections
+        </div>
         <nav
           aria-labelledby={`${kebabCase(title)}-subnav`}
           dangerouslySetInnerHTML={{
@@ -295,14 +276,6 @@ function Comp({ data, location, pageContext }: DocsProps) {
         {renderAst(htmlAst)}
       </div>
     </>
-  );
-}
-
-export default function Docs(props: DocsProps) {
-  return (
-    <CoreLayout>
-      <Comp {...props} />
-    </CoreLayout>
   );
 }
 

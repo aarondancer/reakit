@@ -26,7 +26,7 @@ export function useTooltipState(
     unstable_boundariesElement = "window",
     ...sealed
   } = unstable_useSealedState(initialState);
-  return usePopoverState({ ...sealed, placement });
+  return usePopoverState({ ...sealed, placement, unstable_boundariesElement });
 }
 
 const keys: Keys<TooltipStateReturn> = [...usePopoverState.__keys];

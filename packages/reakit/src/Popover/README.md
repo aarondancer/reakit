@@ -76,6 +76,11 @@ Learn more in [Composition](/docs/composition/#props-hooks).
 
   Actual `placement`.
 
+- **`unstable_fixed`** <span title="Experimental">⚠️</span>
+  <code>boolean | undefined</code>
+
+  TODO: Description
+
 - **`unstable_flip`** <span title="Experimental">⚠️</span>
   <code>boolean | undefined</code>
 
@@ -90,6 +95,16 @@ Learn more in [Composition](/docs/composition/#props-hooks).
   <code>number | undefined</code>
 
   Offset between the reference and the popover.
+
+- **`unstable_preventOverflow`** <span title="Experimental">⚠️</span>
+  <code>boolean | undefined</code>
+
+  TODO: Description.
+
+- **`unstable_boundariesElement`** <span title="Experimental">⚠️</span>
+  <code>&#34;scrollParent&#34; | &#34;viewport&#34; | &#34;window&#34; | undefined</code>
+
+  TODO: Description.
 
 ### `Popover`
 

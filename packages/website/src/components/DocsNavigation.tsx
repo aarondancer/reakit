@@ -9,7 +9,7 @@ import {
 } from "reakit";
 import kebabCase from "lodash/kebabCase";
 import { css } from "emotion";
-import { usePalette, useLighten, useDarken } from "reakit-system-palette/utils";
+import { usePalette, useLighten } from "reakit-system-palette/utils";
 import TestTube from "../icons/TestTube";
 
 type Data = {
@@ -32,7 +32,8 @@ type Data = {
 
 function ExperimentalLink(props: GatsbyLinkProps<{}>) {
   const { unstable_referenceRef, ...tooltip } = useTooltipState({
-    placement: "right"
+    placement: "right",
+    unstable_fixed: true
   });
   return (
     <>
