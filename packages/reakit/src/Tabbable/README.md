@@ -6,6 +6,8 @@ path: /docs/tabbable/
 
 `Tabbable` is an abstract component that implements all the interactions an interactive element needs to be fully accessible when it's not rendered as its respective native element.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

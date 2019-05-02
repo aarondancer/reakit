@@ -6,6 +6,8 @@ path: /docs/radio/
 
 `Radio` follows the [WAI-ARIA Radio Button/Group Pattern](https://www.w3.org/TR/wai-aria-practices/#radiobutton).
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

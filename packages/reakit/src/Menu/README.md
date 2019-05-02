@@ -6,6 +6,8 @@ path: /docs/menu/
 
 `Menu` follows the [WAI-ARIA Menu or Menu bar Pattern](https://www.w3.org/TR/wai-aria-practices/#menu). It also includes a `MenuDisclosure` component that follows the [WAI-ARIA Menu Button Pattern](https://www.w3.org/TR/wai-aria-practices/#menubutton).
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

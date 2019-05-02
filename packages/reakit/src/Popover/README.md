@@ -12,6 +12,8 @@ redirect_from:
 
 `Popover` is a [non-modal dialog](/docs/dialog/#non-modal-dialogs) that floats around its disclosure. It's commonly used for displaying additional rich content on top of something.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

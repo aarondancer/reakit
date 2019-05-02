@@ -8,6 +8,8 @@ redirect_from:
 
 `Button` is a component that enables users to trigger an action or event, such as submitting a [Form](/docs/form/), opening a [Dialog](/docs/dialog/), canceling an action, or performing a delete operation. It follows the [WAI-ARIA Button Pattern](https://www.w3.org/TR/wai-aria-practices/#button).
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

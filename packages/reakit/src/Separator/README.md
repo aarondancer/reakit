@@ -8,6 +8,8 @@ redirect_from:
 
 `Separator` is a static structure that provides a visible boundary for elements. It implements the [WAI-ARIA Separator Role](https://www.w3.org/TR/wai-aria-1.1/#separator).
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

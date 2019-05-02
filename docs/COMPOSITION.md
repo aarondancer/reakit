@@ -10,6 +10,8 @@ Reakit has been built with composition in mind. In fact, its own components are 
 
 The API isn't different. It's designed so you can create new things based on any existing module.
 
+<carbon-ad></carbon-ad>
+
 ## `as` prop
 
 The primary way to compose components is through the `as` prop. If you want to change the underlying element of a Reakit component or combine it with another component, this is the way to go.

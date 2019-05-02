@@ -8,6 +8,8 @@ redirect_from:
 
 `Toolbar` follows the [WAI-ARIA Toolbar Pattern](https://www.w3.org/TR/wai-aria-practices/#toolbar). It's a containers for grouping a set of controls.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

@@ -8,6 +8,8 @@ redirect_from:
 
 You can use Reakit completely or only some of its modules according to your needs. Either way, your final bundle will include only the parts you're using.
 
+<carbon-ad></carbon-ad>
+
 ## Tree shaking
 
 If you're using modern tooling, such as [webpack](https://webpack.js.org/), [create-react-app](https://github.com/facebook/create-react-app) and similars, you already have tree shaking set up.

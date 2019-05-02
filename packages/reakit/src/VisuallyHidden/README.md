@@ -6,6 +6,8 @@ path: /docs/visually-hidden/
 
 `VisuallyHidden` is a common techinique used in web accessibility to hide content from the visual client, but keep it readable for screen readers.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

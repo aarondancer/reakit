@@ -8,6 +8,8 @@ redirect_from:
 
 `Portal` is an abstract wrapper component that uses [React Portals](https://reactjs.org/docs/portals.html) underneath. It can be used to put anything in a portal and supports nested portals.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

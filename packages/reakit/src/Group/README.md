@@ -7,6 +7,8 @@ redirect_from:
 
 # Group
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

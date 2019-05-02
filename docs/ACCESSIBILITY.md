@@ -6,6 +6,8 @@ redirect_from:
 
 # Accessibility
 
+<carbon-ad></carbon-ad>
+
 Reakit strictly follows [WAI-ARIA 1.1](https://www.w3.org/TR/wai-aria/) standards and provides many of the widgets described in [WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices/), like [Button](/docs/button/), [Dialog](/docs/dialog/), [Tab](/docs/tab/) and others.
 
 This means that DOM attributes like `role` and `aria-*` are added automatically. When they can't be automatically inferred, Reakit will emit a warning to remember you to pass them. Like so:

@@ -13,6 +13,8 @@ redirect_from:
 
 `Tab` follows the [WAI-ARIA Tabs Pattern](https://www.w3.org/TR/wai-aria-practices/#tabpanel). It's a component that, when activated, display a `TabPanel`.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

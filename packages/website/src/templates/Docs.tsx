@@ -8,13 +8,13 @@ import {
   usePlaygroundState
 } from "reakit-playground";
 import createUseContext from "constate";
-import kebabCase from "lodash/kebabCase";
 import { FaUniversalAccess } from "react-icons/fa";
-import { Button, Hidden } from "reakit";
 import FiraCodeBold from "../fonts/FiraCode-Bold.woff";
 import FiraCodeLight from "../fonts/FiraCode-Light.woff";
 import FiraCodeMedium from "../fonts/FiraCode-Medium.woff";
 import FiraCodeRegular from "../fonts/FiraCode-Regular.woff";
+import CarbonAd from "../components/CarbonAd";
+import DocsInnerNavigation from "../components/DocsInnerNavigation";
 
 injectGlobal`
   body {
@@ -50,50 +50,6 @@ injectGlobal`
     font-family: "Fira Code", monospace !important;
     font-size: 15px !important;
   }
-  #carbonads {
-    display: block;
-    overflow: hidden;
-    padding: 1em;
-    max-width: 360px;
-  }
-
-  #carbonads a {
-    text-decoration: none;
-  }
-
-  #carbonads span {
-    position: relative;
-    display: block;
-    overflow: hidden;
-  }
-
-  .carbon-img {
-    float: left;
-    margin-right: 1em;
-  }
-
-  .carbon-img img {
-    display: block;
-  }
-
-  .carbon-text {
-    display: block;
-    float: left;
-    line-height: 1.4;
-    max-width: calc(100% - 130px - 1em);
-    text-align: left;
-  }
-
-  .carbon-poweredby {
-    position: absolute;
-    left: calc(130px + 1rem);
-    bottom: 0;
-    display: block;
-    font-size: 10px;
-    text-transform: uppercase;
-    line-height: 1;
-    letter-spacing: 1px;
-  }
 `;
 
 type DocsProps = {
@@ -126,24 +82,12 @@ function getChildrenCode(props: { children?: React.ReactNode }) {
   return null;
 }
 
-// function getText(props: { children?: React.ReactNode }): string {
-//   const children = React.Children.toArray(props.children);
-//   return children.reduce<string>((acc, curr) => {
-//     if (typeof curr === "string") {
-//       return `${acc}${curr}`;
-//     }
-//     if (typeof curr === "object" && curr !== null && "props" in curr) {
-//       return `${acc}${getText(curr.props)}`;
-//     }
-//     return acc;
-//   }, "");
-// }
-
 const { Compiler: renderAst } = new RehypeReact({
   createElement: React.createElement,
   components: {
+    "carbon-ad": CarbonAd,
     a: ({ href, ...props }: React.AnchorHTMLAttributes<any>) => {
-      if (href && !/^(http|www|\/\/|#)/.test(href)) {
+      if (href && /^\/(?!\/)/.test(href)) {
         return <Link to={href} {...props} />;
       }
       return (
@@ -206,71 +150,18 @@ const { Compiler: renderAst } = new RehypeReact({
   }
 });
 
-function loadScript(src, position) {
-  const script = document.createElement("script");
-  script.setAttribute("async", "");
-  script.src = src;
-  position.appendChild(script);
-
-  return script;
-}
-
-class AdCarbon extends React.Component {
-  componentDidMount() {
-    const scriptSlot = document.querySelector("#carbon-ad");
-
-    // Concurrence issues
-    if (!scriptSlot) {
-      return;
-    }
-
-    const script = loadScript(
-      "https://cdn.carbonads.com/carbon.js?serve=CK7DV27N&placement=reakitio",
-      scriptSlot
-    );
-    script.id = "_carbonads_js";
-  }
-
-  render() {
-    return <span id="carbon-ad" />;
-  }
-}
-
-export default function Docs({ data, location, pageContext }: DocsProps) {
+export default function Docs({ data, pageContext, location }: DocsProps) {
   const {
     markdownRemark: { title, htmlAst, tableOfContents }
   } = data;
   return (
     <>
       <div style={{ marginLeft: 260 }}>
-        <AdCarbon />
-        {/* <div
-          dangerouslySetInnerHTML={{
-            __html: `<script
-          async
-          type="text/javascript"
-          src="https://cdn.carbonads.com/carbon.js?serve=CK7DV27N&placement=reakitio"
-          id="_carbonads_js"
-        />`
-          }}
-        /> */}
-
-        <Button as="a" href={pageContext.sourceUrl}>
-          View source on GitHub
-        </Button>
-        <Button as="a" href={pageContext.readmeUrl}>
-          Edit this page
-        </Button>
-        <div style={{ display: "none" }} id={`${kebabCase(title)}-subnav`}>
-          {title} sections
-        </div>
-        <nav
-          aria-labelledby={`${kebabCase(title)}-subnav`}
-          dangerouslySetInnerHTML={{
-            __html: tableOfContents
-              .replace(/(<\/?p>)/gim, "")
-              .replace(new RegExp(`${location.pathname}/?`, "gim"), "")
-          }}
+        <DocsInnerNavigation
+          {...pageContext}
+          pathname={location.pathname}
+          title={title}
+          tableOfContents={tableOfContents}
         />
         <h1>{title}</h1>
         {renderAst(htmlAst)}

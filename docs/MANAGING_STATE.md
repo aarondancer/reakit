@@ -6,6 +6,8 @@ redirect_from:
 
 # Managing state
 
+<carbon-ad></carbon-ad>
+
 Reakit components are pretty much stateless, which means that they need props to be passed in so as to modify their state.
 
 [Hidden](/docs/hidden/), for example, is a generic component that can be hidden or visible based on props:

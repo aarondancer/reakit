@@ -6,6 +6,8 @@ path: /docs/basic-concepts/
 
 Because it has so many components, Reakit has a very wide API surface. However, the API is established on principles that make it more consistent throughout the components. Understanding these concepts will give you enough base to work with any Reakit component right away.
 
+<carbon-ad></carbon-ad>
+
 ## Components
 
 Like any other component library, components are the **higher level API** in Reakit. The [Hidden](/docs/hidden/) component, for example, renders an element that can be hidden or visible.

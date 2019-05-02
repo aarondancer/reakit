@@ -12,6 +12,8 @@ redirect_from:
 
 `Hidden` is an abstract component based on the [WAI-ARIA Disclosure Pattern](https://www.w3.org/TR/wai-aria-practices/#disclosure).
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

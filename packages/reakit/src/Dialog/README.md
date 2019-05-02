@@ -13,6 +13,8 @@ redirect_from:
 
 `Dialog` follows the [WAI-ARIA Dialog (Modal) Pattern](https://www.w3.org/TR/wai-aria-practices/#dialog_modal). It's rendered within a [Portal](/docs/portal/) by default, but it also has a [non-modal state](#non-modal-dialogs), which doesn't use portals.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

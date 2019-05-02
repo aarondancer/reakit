@@ -48,34 +48,14 @@ function ExperimentalLink(props: GatsbyLinkProps<{}>) {
   );
 }
 
-function DocsNavigation() {
-  const { allDocsYaml, allMarkdownRemark } = useStaticQuery<Data>(graphql`
-    query {
-      allDocsYaml {
-        nodes {
-          section
-          paths
-        }
-      }
-      allMarkdownRemark {
-        nodes {
-          title
-          frontmatter {
-            path
-            experimental
-          }
-        }
-      }
-    }
-  `);
-  const baseId = unstable_useId("docs-navigation-");
+function useDocsNavigationCSS() {
   const background = usePalette("background");
   const foreground = usePalette("foreground");
   const primary = usePalette("primary");
   const currentBackgroundColor = useLighten(primary, 0.85);
   const headingColor = useLighten(foreground, 0.5);
 
-  const className = css`
+  const docsNavigation = css`
     background-color: ${background};
     color: ${foreground};
     h3 {
@@ -106,6 +86,11 @@ function DocsNavigation() {
       border-left: 5px solid transparent;
       cursor: pointer;
 
+      &:focus {
+        outline: none;
+        background-color: ${currentBackgroundColor};
+      }
+
       &:hover {
         color: ${primary};
       }
@@ -121,16 +106,24 @@ function DocsNavigation() {
     }
   `;
 
+  return docsNavigation;
+}
+
+export default function DocsNavigation() {
+  const data: Data = useStaticQuery(query);
+  const baseId = unstable_useId("docs-navigation-");
+  const className = useDocsNavigationCSS();
+
   const getId = (section: string) => `${baseId}-${kebabCase(section)}`;
   const findMeta = (path: string) =>
-    allMarkdownRemark.nodes.find(node => node.frontmatter.path === path)!;
+    data.allMarkdownRemark.nodes.find(node => node.frontmatter.path === path)!;
   const getTitle = (path: string) => findMeta(path).title;
   const getIsExperimental = (path: string) =>
     Boolean(findMeta(path).frontmatter.experimental);
 
   return (
     <div className={className}>
-      {allDocsYaml.nodes.map(node => (
+      {data.allDocsYaml.nodes.map(node => (
         <nav key={node.section} aria-labelledby={getId(node.section)}>
           <h3 id={getId(node.section)}>{node.section}</h3>
           <ul>
@@ -152,4 +145,22 @@ function DocsNavigation() {
   );
 }
 
-export default DocsNavigation;
+const query = graphql`
+  query DocsQuery {
+    allDocsYaml {
+      nodes {
+        section
+        paths
+      }
+    }
+    allMarkdownRemark {
+      nodes {
+        title
+        frontmatter {
+          path
+          experimental
+        }
+      }
+    }
+  }
+`;

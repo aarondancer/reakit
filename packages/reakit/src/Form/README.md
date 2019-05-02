@@ -13,6 +13,8 @@ redirect_from:
 
 `Form` is a component with a collection of other components, such as `FormLabel` and `FormInput`.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

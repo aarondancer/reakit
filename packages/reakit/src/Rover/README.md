@@ -6,6 +6,8 @@ path: /docs/rover/
 
 `Rover` is an abstract component that implements the [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex) method to manage focus between items (rovers).
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh

@@ -1,7 +1,7 @@
 import * as React from "react";
 import DocsNavigation from "./DocsNavigation";
 
-function CoreLayout(props: { children: React.ReactNode }) {
+export default function CoreLayout(props: { children: React.ReactNode }) {
   return (
     <>
       <div
@@ -25,5 +25,3 @@ function CoreLayout(props: { children: React.ReactNode }) {
     </>
   );
 }
-
-export default CoreLayout;

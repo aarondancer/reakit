@@ -8,6 +8,8 @@ redirect_from:
 
 `Tooltip` follows the [WAI-ARIA Tooltip Pattern](https://www.w3.org/TR/wai-aria-practices/#tooltip). It's a popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
 
+<carbon-ad></carbon-ad>
+
 ## Installation
 
 ```sh
