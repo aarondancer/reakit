@@ -66,6 +66,7 @@ export function PlaygroundEditor({
   const enabledRef = useLiveRef(enabled);
   const _readOnly =
     typeof options.readOnly !== "undefined" ? options.readOnly : !enabled;
+  const [ready, setReady] = React.useState(Boolean(options.readOnly));
 
   htmlProps = unstable_useProps(
     "PlaygroundEditor",
@@ -77,8 +78,13 @@ export function PlaygroundEditor({
     .filter(Boolean)
     .join(" ");
 
-  if (typeof window === "undefined") {
-    return <p className={className}>Loading source code...</p>;
+  React.useEffect(() => {
+    const id = requestAnimationFrame(() => setReady(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  if (typeof window === "undefined" || !ready) {
+    return <div className={className} />;
   }
 
   return (

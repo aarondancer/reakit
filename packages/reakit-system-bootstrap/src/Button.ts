@@ -38,6 +38,7 @@ export function useButtonProps(
     padding: 0.375em 0.75em;
     line-height: 1.5;
     border-radius: 0.25rem;
+    text-decoration: none;
     border: 1px solid ${borderColor};
     cursor: pointer;
     white-space: nowrap;

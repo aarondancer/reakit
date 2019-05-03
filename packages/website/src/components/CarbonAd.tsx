@@ -18,6 +18,7 @@ export default function CarbonAd() {
   const poweredbyColor = useLighten(foreground, 0.4);
 
   const className = css`
+    display: block;
     position: relative;
     margin: 32px 0;
     max-width: 480px;
@@ -76,5 +77,5 @@ export default function CarbonAd() {
     script.id = "_carbonads_js";
   }, []);
 
-  return <div ref={ref} className={className} />;
+  return <span ref={ref} className={className} />;
 }

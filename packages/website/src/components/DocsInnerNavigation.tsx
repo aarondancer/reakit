@@ -1,63 +1,179 @@
 import * as React from "react";
+import RehypeReact from "rehype-react";
 import { unstable_useId } from "reakit/utils/useId";
 import { Button } from "reakit";
+import { css } from "emotion";
+import createUseContext from "constate";
+import { FaEdit, FaGithubAlt } from "react-icons/fa";
+import { usePalette, useLighten } from "reakit-system-palette/utils";
+import Spacer from "./Spacer";
 
 type Props = {
-  pathname: string;
   readmeUrl: string;
   sourceUrl: string;
   title: string;
-  tableOfContents?: string;
+  tableOfContentsAst: object;
 };
+
+function useCollection() {
+  const [items, setItems] = React.useState<string[]>([]);
+  const add = React.useCallback((item: string) => {
+    setItems(prevItems => [...prevItems, item]);
+  }, []);
+  const remove = React.useCallback((item: string) => {
+    setItems(prevItems => {
+      const idx = prevItems.indexOf(item);
+      return [...prevItems.slice(0, idx), ...prevItems.slice(idx + 1)];
+    });
+  }, []);
+  return {
+    items,
+    add,
+    remove
+  };
+}
+
+const useCollectionContext = createUseContext(useCollection, v =>
+  Object.values(v)
+);
+
+function useScrollSpy() {
+  const { items } = useCollectionContext();
+  const [currentId, setCurrentId] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (!items.length) return undefined;
+
+    const elements = document.querySelectorAll<HTMLElement>(
+      items.map(item => `[id="${item}"]`).join(",")
+    );
+    const elementsArray = Array.from(elements);
+
+    const handleScroll = () => {
+      elementsArray.forEach(element => {
+        if (element.offsetTop <= window.scrollY + 80) {
+          setCurrentId(element.id);
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [items]);
+
+  return currentId;
+}
+
+const useScrollSpyContext = createUseContext(useScrollSpy);
+
+function useDocsInnerNavigationCSS() {
+  const background = usePalette("background");
+  const foreground = usePalette("foreground");
+  const borderColor = useLighten(foreground, 0.9);
+
+  const docsInnerNavigation = css`
+    font-size: 0.875em;
+    background-color: ${background};
+    color: ${foreground};
+
+    > * {
+      margin-bottom: 16px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        padding: 0.25em 0;
+      }
+
+      ul {
+        margin: 4px 0 0 1px;
+        padding-left: 12px;
+        border-left: 1px solid ${borderColor};
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+        &[aria-current="page"] {
+          font-weight: bold;
+        }
+      }
+    }
+  `;
+
+  return docsInnerNavigation;
+}
+
+const { Compiler: renderAst } = new RehypeReact({
+  createElement: React.createElement,
+  components: {
+    p: (props: React.PropsWithChildren<{}>) => <span {...props} />,
+    a: (props: React.AnchorHTMLAttributes<any>) => {
+      const [href] = React.useState(
+        () => props.href && props.href.replace(/^.*(#.+)$/, "$1")
+      );
+      const id = href && href.substr(1);
+      const { add, remove } = useCollectionContext();
+      const currentId = useScrollSpyContext();
+
+      React.useEffect(() => {
+        if (!id) return undefined;
+        add(id);
+        return () => remove(id);
+      }, [add, remove]);
+
+      if (href) {
+        return (
+          <a
+            {...props}
+            href={href}
+            aria-current={currentId === id ? "page" : undefined}
+          >
+            {props.children}
+          </a>
+        );
+      }
+      return <a {...props}>{props.children}</a>;
+    }
+  }
+});
 
 export default function DocsInnerNavigation({
   sourceUrl,
   readmeUrl,
-  pathname,
   title,
-  tableOfContents
+  tableOfContentsAst
 }: Props) {
   const id = unstable_useId();
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [ids, setIds] = React.useState<string[]>([]);
-
-  const html =
-    tableOfContents &&
-    tableOfContents
-      .replace(/(<\/?p>)/gim, "")
-      .replace(new RegExp(`${pathname}/?`, "gim"), "");
-
-  React.useEffect(() => {
-    if (html) {
-      const matches = html.match(/href="#([^"]+)/gim);
-      // const matches;
-      const lol = html.match(/href="#([^"]+)/gim) || [];
-      // console.log(lol);
-      // setIds(matches);
-    }
-  }, [html]);
-
-  // console.log(ids);
+  const className = useDocsInnerNavigationCSS();
 
   return (
-    <div ref={ref}>
-      <Button as="a" href={sourceUrl}>
-        View source on GitHub
-      </Button>
-      <Button as="a" href={readmeUrl}>
-        Edit this page
-      </Button>
-      {html && (
-        <>
+    <useCollectionContext.Provider>
+      <useScrollSpyContext.Provider>
+        <div className={className}>
+          <Button as="a" href={sourceUrl} unstable_system={{ fill: "outline" }}>
+            <FaGithubAlt />
+            <Spacer mx={4} /> View on GitHub
+          </Button>
+          <Button as="a" href={readmeUrl} unstable_system={{ fill: "outline" }}>
+            <FaEdit />
+            <Spacer mx={4} />
+            Edit this page
+          </Button>
           <div hidden id={id}>
             {title} sections
           </div>
-          <nav
-            aria-labelledby={id}
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        </>
-      )}
-    </div>
+          <nav aria-labelledby={id}>{renderAst(tableOfContentsAst)}</nav>
+        </div>
+      </useScrollSpyContext.Provider>
+    </useCollectionContext.Provider>
   );
 }

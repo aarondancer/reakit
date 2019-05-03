@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 const { resolve, relative, dirname } = require("path");
+const rehype = require("rehype");
 const { repository } = require("./package.json");
 
 exports.createPages = ({ actions, graphql }) => {
@@ -16,6 +17,7 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             fileAbsolutePath
+            tableOfContents(pathToSlugField: "frontmatter.path")
             frontmatter {
               path
               redirect_from
@@ -29,21 +31,25 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
-    return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      const { frontmatter, fileAbsolutePath } = node;
+    return result.data.allMarkdownRemark.edges.forEach(async ({ node }) => {
+      const { frontmatter, fileAbsolutePath, tableOfContents } = node;
       const { path, redirect_from } = frontmatter;
 
       const root = `${__dirname}/../..`;
       const repo = `${repository.replace(/(\/tree.+|\/)$/, "")}/tree/master/`;
       const sourceUrl = `${repo}${relative(root, dirname(fileAbsolutePath))}`;
       const readmeUrl = `${repo}${relative(root, fileAbsolutePath)}`;
+      const tableOfContentsAst = await rehype()
+        .data("settings", { fragment: true })
+        .parse(tableOfContents);
 
       createPage({
         path,
         component: template,
         context: {
           sourceUrl,
-          readmeUrl
+          readmeUrl,
+          tableOfContentsAst
         }
       });
 
