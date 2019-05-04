@@ -55,8 +55,13 @@ module.exports = {
           },
           "gatsby-remark-code-modifiers",
           "gatsby-remark-title",
-          "gatsby-remark-autolink-headers",
-          "gatsby-remark-smartypants"
+          {
+            resolve: "gatsby-remark-autolink-headers",
+            options: {
+              offsetY: 100,
+              icon: "<span>#</span>"
+            }
+          }
         ]
       }
     },

@@ -6,6 +6,7 @@ import { css } from "emotion";
 import createUseContext from "constate";
 import { FaEdit, FaGithubAlt } from "react-icons/fa";
 import { usePalette, useLighten } from "reakit-system-palette/utils";
+import useLocation from "../hooks/useLocation";
 import Spacer from "./Spacer";
 
 type Props = {
@@ -40,6 +41,9 @@ const useCollectionContext = createUseContext(useCollection, v =>
 function useScrollSpy() {
   const { items } = useCollectionContext();
   const [currentId, setCurrentId] = React.useState<string | null>(null);
+  const location = useLocation();
+
+  React.useEffect(() => setCurrentId(null), [location.pathname]);
 
   React.useEffect(() => {
     if (!items.length) return undefined;
@@ -51,7 +55,7 @@ function useScrollSpy() {
 
     const handleScroll = () => {
       elementsArray.forEach(element => {
-        if (element.offsetTop <= window.scrollY + 80) {
+        if (element.offsetTop <= window.scrollY + 100) {
           setCurrentId(element.id);
         }
       });
@@ -158,7 +162,7 @@ export default function DocsInnerNavigation({
   return (
     <useCollectionContext.Provider>
       <useScrollSpyContext.Provider>
-        <aside className={className}>
+        <div className={className} key={title}>
           <Button as="a" href={sourceUrl} unstable_system={{ fill: "outline" }}>
             <FaGithubAlt />
             <Spacer mx={4} /> View on GitHub
@@ -172,7 +176,7 @@ export default function DocsInnerNavigation({
             {title} sections
           </div>
           <nav aria-labelledby={id}>{renderAst(tableOfContentsAst)}</nav>
-        </aside>
+        </div>
       </useScrollSpyContext.Provider>
     </useCollectionContext.Provider>
   );

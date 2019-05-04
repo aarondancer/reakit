@@ -9,7 +9,6 @@ import {
 import createUseContext from "constate";
 import { FaUniversalAccess } from "react-icons/fa";
 import CarbonAd from "../components/CarbonAd";
-import DocsInnerNavigation from "../components/DocsInnerNavigation";
 import Anchor from "../components/Anchor";
 import Paragraph from "../components/Paragraph";
 import List from "../components/List";
@@ -19,11 +18,6 @@ import TestTube from "../icons/TestTube";
 import Heading from "../components/Heading";
 
 type DocsProps = {
-  pageContext: {
-    sourceUrl: string;
-    readmeUrl: string;
-    tableOfContentsAst: object;
-  };
   data: {
     markdownRemark: {
       title: string;
@@ -124,33 +118,16 @@ const { Compiler: renderAst } = new RehypeReact({
   }
 });
 
-export default function Docs({ data, pageContext }: DocsProps) {
+export default function Docs({ data }: DocsProps) {
   const {
     markdownRemark: { title, htmlAst }
   } = data;
   return (
     <>
-      <div style={{ marginLeft: 260, marginRight: 240 }}>
-        <Heading id="content" tabIndex={-1}>
-          {title}
-        </Heading>
-        {renderAst(htmlAst)}
-        <div
-          style={{
-            position: "fixed",
-            top: 20,
-            right: 0,
-            width: 210,
-            background: "white"
-          }}
-        >
-          <DocsInnerNavigation
-            {...pageContext}
-            title={title}
-            tableOfContentsAst={pageContext.tableOfContentsAst}
-          />
-        </div>
-      </div>
+      <Heading id="content" tabIndex={-1}>
+        {title}
+      </Heading>
+      {renderAst(htmlAst)}
     </>
   );
 }

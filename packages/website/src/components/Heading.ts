@@ -15,6 +15,13 @@ export const useHeading = unstable_createHook<HeadingOptions, HeadingHTMLProps>(
     useProps(_, htmlProps) {
       const heading = css`
         line-height: 1.5;
+        & > .anchor:focus > *,
+        &:hover > .anchor > * {
+          visibility: visible;
+        }
+        & > .anchor > * {
+          visibility: hidden;
+        }
         h1& {
           font-size: 2.5em;
           @media (max-width: 780px) {
