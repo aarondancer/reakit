@@ -158,7 +158,7 @@ export default function DocsInnerNavigation({
   return (
     <useCollectionContext.Provider>
       <useScrollSpyContext.Provider>
-        <div className={className}>
+        <aside className={className}>
           <Button as="a" href={sourceUrl} unstable_system={{ fill: "outline" }}>
             <FaGithubAlt />
             <Spacer mx={4} /> View on GitHub
@@ -172,7 +172,7 @@ export default function DocsInnerNavigation({
             {title} sections
           </div>
           <nav aria-labelledby={id}>{renderAst(tableOfContentsAst)}</nav>
-        </div>
+        </aside>
       </useScrollSpyContext.Provider>
     </useCollectionContext.Provider>
   );

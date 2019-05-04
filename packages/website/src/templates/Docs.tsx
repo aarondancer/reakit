@@ -1,6 +1,5 @@
 import * as React from "react";
-import { injectGlobal, css } from "emotion";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import RehypeReact from "rehype-react";
 import {
   PlaygroundPreview,
@@ -9,56 +8,15 @@ import {
 } from "reakit-playground";
 import createUseContext from "constate";
 import { FaUniversalAccess } from "react-icons/fa";
-import FiraCodeBold from "../fonts/FiraCode-Bold.woff";
-import FiraCodeLight from "../fonts/FiraCode-Light.woff";
-import FiraCodeMedium from "../fonts/FiraCode-Medium.woff";
-import FiraCodeRegular from "../fonts/FiraCode-Regular.woff";
 import CarbonAd from "../components/CarbonAd";
 import DocsInnerNavigation from "../components/DocsInnerNavigation";
-
-injectGlobal`
-  body {
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
-      "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol";
-  }
-  code {
-    font-family: "Fira Code", monospace;
-    background-color: #eee;
-    padding: 0.15em 0.3em;
-  }
-  a {
-    color: blue;
-  }
-  @font-face {
-    font-family: "Fira Code";
-    src: url(${FiraCodeLight});
-    font-weight: 300;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Fira Code";
-    src: url(${FiraCodeRegular});
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Fira Code";
-    src: url(${FiraCodeMedium});
-    font-weight: 500;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Fira Code";
-    src: url(${FiraCodeBold});
-    font-weight: 700;
-    font-style: normal;
-  }
-  .CodeMirror {
-    font-family: "Fira Code", monospace !important;
-    font-size: 15px !important;
-  }
-`;
+import Anchor from "../components/Anchor";
+import Paragraph from "../components/Paragraph";
+import List from "../components/List";
+import KeyboardInput from "../components/KeyboardInput";
+import Blockquote from "../components/Blockquote";
+import TestTube from "../icons/TestTube";
+import Heading from "../components/Heading";
 
 type DocsProps = {
   pageContext: {
@@ -91,53 +49,26 @@ const { Compiler: renderAst } = new RehypeReact({
   createElement: React.createElement,
   components: {
     "carbon-ad": CarbonAd,
-    a: ({ href, ...props }: React.AnchorHTMLAttributes<any>) => {
-      if (href && /^\/(?!\/)/.test(href)) {
-        return <Link to={href} {...props} />;
+    a: Anchor,
+    p: Paragraph,
+    ul: List,
+    kbd: KeyboardInput,
+    blockquote: Blockquote,
+    h1: Heading,
+    h2: props => <Heading as="h2" {...props} />,
+    h3: props => <Heading as="h3" {...props} />,
+    h4: props => <Heading as="h4" {...props} />,
+    h5: props => <Heading as="h5" {...props} />,
+    h6: props => <Heading as="h6" {...props} />,
+    span: (props: React.HTMLAttributes<any>) => {
+      if (props.title === "Experimental") {
+        return (
+          <span {...props}>
+            <TestTube />
+          </span>
+        );
       }
-      return (
-        <a href={href} {...props}>
-          {props.children}
-        </a>
-      );
-    },
-    p: props => {
-      const p = css`
-        line-height: 1.5;
-      `;
-      return <p className={p} {...props} />;
-    },
-    ul: props => {
-      const ul = css`
-        line-height: 1.5;
-        li {
-          margin-bottom: 0.5em;
-        }
-      `;
-      return <ul className={ul} {...props} />;
-    },
-    kbd: props => {
-      const kbd = css`
-        border-radius: 0.25em;
-        font-family: "Fira Code", monospace;
-        background-color: #f5f5f5;
-        padding: 0.3em 0.5em 0.25em;
-        border: 1px solid #e0e0e0;
-        border-width: 1px 1px 2px 1px;
-        font-size: 0.875em;
-      `;
-      return <kbd className={kbd} {...props} />;
-    },
-    blockquote: props => {
-      const blockquote = css`
-        background-color: rgb(255, 248, 216);
-        border-left-color: rgb(255, 229, 102);
-        border-left-width: 8px;
-        border-left-style: solid;
-        padding: 20px 16px 20px 25px;
-        margin: 20px 0;
-      `;
-      return <blockquote className={blockquote} {...props} />;
+      return <span {...props} />;
     },
     pre: (props: React.HTMLAttributes<any>) => {
       const codeElement = getChildrenCode(props);
@@ -200,6 +131,10 @@ export default function Docs({ data, pageContext }: DocsProps) {
   return (
     <>
       <div style={{ marginLeft: 260, marginRight: 240 }}>
+        <Heading id="content" tabIndex={-1}>
+          {title}
+        </Heading>
+        {renderAst(htmlAst)}
         <div
           style={{
             position: "fixed",
@@ -215,8 +150,6 @@ export default function Docs({ data, pageContext }: DocsProps) {
             tableOfContentsAst={pageContext.tableOfContentsAst}
           />
         </div>
-        <h1>{title}</h1>
-        {renderAst(htmlAst)}
       </div>
     </>
   );

@@ -6,7 +6,8 @@ import * as playgroundSystem from "reakit-playground/system";
 const system = unstable_mergeSystem(bootstrapSystem, playgroundSystem, {
   palette: {
     ...bootstrapSystem.palette,
-    primary: "#805AD5"
+    primary: "#805ad5",
+    link: "#007bff"
   }
 });
 

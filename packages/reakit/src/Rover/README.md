@@ -54,8 +54,8 @@ function Example() {
 - Pressing <kbd>↓</kbd> moves focus to the next `Rover` if `orientation` is `vertical` or not defined.
 - Pressing <kbd>→</kbd> moves focus to the next `Rover` if `orientation` is `horizontal` or not defined.
 - Pressing <kbd>←</kbd> moves focus to the previous `Rover` if `orientation` is `horizontal` or not defined.
-- Pressing <kbd>Home<kbd> or <kbd>PageUp</kbd> moves focus to the first `Rover`.
-- Pressing <kbd>End<kbd> or <kbd>PageDown</kbd> moves focus to the last `Rover`.
+- Pressing <kbd>Home</kbd> or <kbd>PageUp</kbd> moves focus to the first `Rover`.
+- Pressing <kbd>End</kbd> or <kbd>PageDown</kbd> moves focus to the last `Rover`.
 
 Learn more in [Accessibility](/docs/accessibility/).
 

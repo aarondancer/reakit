@@ -9,7 +9,9 @@ redirect_from:
 
 # Form
 
-> **This is experimental** and may have breaking changes in minor or patch version updates. Issues for this module will have lower priority. Even so, if you use it, feel free to [give us feedback](https://github.com/reakit/reakit/issues/new/choose).
+<blockquote experimental="true">
+  <strong>This is experimental</strong> and may have breaking changes in minor or patch version updates. Issues for this module will have lower priority. Even so, if you use it, feel free to <a href="https://github.com/reakit/reakit/issues/new/choose" target="_blank">give us feedback</a>.
+</blockquote>
 
 `Form` is a component with a collection of other components, such as `FormLabel` and `FormInput`.
 

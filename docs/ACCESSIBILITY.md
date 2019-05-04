@@ -6,15 +6,21 @@ redirect_from:
 
 # Accessibility
 
-<carbon-ad></carbon-ad>
-
 Reakit strictly follows [WAI-ARIA 1.1](https://www.w3.org/TR/wai-aria/) standards and provides many of the widgets described in [WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices/), like [Button](/docs/button/), [Dialog](/docs/dialog/), [Tab](/docs/tab/) and others.
 
-This means that DOM attributes like `role` and `aria-*` are added automatically. When they can't be automatically inferred, Reakit will emit a warning to remember you to pass them. Like so:
+This means that DOM attributes like `role` and `aria-*` are added automatically.
+
+<carbon-ad></carbon-ad>
+
+## Accessibility warnings
+
+When attributes can't be automatically inferred, Reakit will emit a warning to remember you to pass them. Like so:
 
 > ⚠️ [reakit/Menu]
 > You should provide either `aria-label` or `aria-labelledby` props.
 > See https://www.w3.org/TR/wai-aria-practices-1.1/#wai-aria-roles-states-and-properties-13
+
+## Focus management and keyboard interactions
 
 Besides attributes, Reakit manages focus and keyboard interactions for components that need them. For example:
 
