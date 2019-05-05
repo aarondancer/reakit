@@ -9,6 +9,7 @@ import DocsNavigation from "./DocsNavigation";
 import DocsInnerNavigation from "./DocsInnerNavigation";
 import Anchor from "./Anchor";
 import Paragraph from "./Paragraph";
+import SkipToContent from "./SkipToContent";
 
 const year = new Date().getFullYear();
 
@@ -39,11 +40,6 @@ injectGlobal`
     margin: 0;
     padding: 0;
   }
-  
-  .CodeMirror {
-    font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;
-    font-size: 15px !important;
-  }
 `;
 
 function useCodeCSS() {
@@ -52,7 +48,6 @@ function useCodeCSS() {
   const code = css`
     font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;
     background-color: ${backgroundColor};
-    color: ${foreground};
     border-radius: 3px;
     font-size: 0.875em;
     padding: 0.2em 0.4em;
@@ -102,6 +97,7 @@ export default function CoreLayout(props: CoreLayoutProps) {
           background: "white"
         }}
       >
+        <SkipToContent />
         <Anchor as={Link} to="/">
           Reakit
         </Anchor>
@@ -129,7 +125,9 @@ export default function CoreLayout(props: CoreLayoutProps) {
           <DocsNavigation />
         </div>
       )}
-      <main className={main}>{props.children}</main>
+      <main id="main" className={main}>
+        {props.children}
+      </main>
       {title && props.pageContext.tableOfContentsAst && isLarge && (
         <aside
           style={{

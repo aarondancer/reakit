@@ -11,7 +11,6 @@ import kebabCase from "lodash/kebabCase";
 import { css } from "emotion";
 import { usePalette, useLighten } from "reakit-system-palette/utils";
 import TestTube from "../icons/TestTube";
-import SkipToContent from "./SkipToContent";
 
 type Data = {
   allDocsYaml: {
@@ -124,7 +123,6 @@ export default function DocsNavigation() {
 
   return (
     <div className={className}>
-      <SkipToContent />
       {data.allDocsYaml.nodes.map(node => (
         <nav key={node.section} aria-labelledby={getId(node.section)}>
           <h3 id={getId(node.section)}>{node.section}</h3>

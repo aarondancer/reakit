@@ -124,9 +124,7 @@ export default function Docs({ data }: DocsProps) {
   } = data;
   return (
     <>
-      <Heading id="content" tabIndex={-1}>
-        {title}
-      </Heading>
+      <Heading>{title}</Heading>
       {renderAst(htmlAst)}
     </>
   );

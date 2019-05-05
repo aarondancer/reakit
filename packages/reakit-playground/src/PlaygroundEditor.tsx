@@ -66,7 +66,7 @@ export function PlaygroundEditor({
   const enabledRef = useLiveRef(enabled);
   const _readOnly =
     typeof options.readOnly !== "undefined" ? options.readOnly : !enabled;
-  const [ready, setReady] = React.useState(Boolean(options.readOnly));
+  const [ready, setReady] = React.useState(false);
 
   htmlProps = unstable_useProps(
     "PlaygroundEditor",
@@ -83,15 +83,17 @@ export function PlaygroundEditor({
     return () => cancelAnimationFrame(id);
   }, []);
 
+  const value = options.readOnly ? options.code.trim() : options.code;
+
   if (typeof window === "undefined" || !ready) {
-    return <div className={className} />;
+    return <pre className={className}>{value}</pre>;
   }
 
   return (
     <CodeMirror
       className={className}
-      value={options.readOnly ? options.code.trim() : options.code}
-      onBeforeChange={(_, __, value) => options.update(value)}
+      value={value}
+      onBeforeChange={(_, __, val) => options.update(val)}
       onMouseDown={() => setEnabled(true)}
       onTouchStart={() => setEnabled(true)}
       onKeyDown={(_, event: KeyboardEvent) => {

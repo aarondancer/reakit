@@ -1,11 +1,11 @@
 import { css, cx } from "emotion";
-import { useBox, BoxOptions, BoxProps } from "reakit";
 import { unstable_createHook } from "reakit/utils/createHook";
 import { unstable_createComponent } from "reakit/utils/createComponent";
-import { usePalette, useDarken } from "reakit-system-palette/utils";
+import { usePalette } from "reakit-system-palette/utils";
+import { useAnchor, AnchorOptions, AnchorProps } from "./Anchor";
 
-export type SkipToContentOptions = BoxOptions;
-export type SkipToContentHTMLProps = BoxProps;
+export type SkipToContentOptions = AnchorOptions;
+export type SkipToContentHTMLProps = AnchorProps;
 export type SkipToContentProps = SkipToContentOptions & SkipToContentHTMLProps;
 
 export const useSkipToContent = unstable_createHook<
@@ -13,12 +13,10 @@ export const useSkipToContent = unstable_createHook<
   SkipToContentHTMLProps
 >({
   name: "SkipToContent",
-  compose: useBox,
+  compose: useAnchor,
 
   useProps(_, htmlProps) {
     const background = usePalette("background");
-    const backgroundColor = useDarken(background, 0.05);
-    const foreground = usePalette("foreground");
 
     const skipToContent = css`
       left: -999px;
@@ -30,23 +28,22 @@ export const useSkipToContent = unstable_createHook<
       z-index: -999;
       &:focus,
       &:active {
-        background-color: ${backgroundColor} !important;
-        color: ${foreground} !important;
+        background-color: ${background} !important;
         left: auto;
         top: auto;
         height: auto;
         width: max-content;
         overflow: auto;
         padding: 1em;
-        border: 4px solid ${foreground};
+        margin: 1em;
         text-align: center;
         z-index: 999;
       }
     `;
     return {
       tabIndex: 0,
-      children: "Skip to content",
-      href: "#content",
+      children: "Skip to main content",
+      href: "#main",
       ...htmlProps,
       className: cx(skipToContent, htmlProps.className)
     };
