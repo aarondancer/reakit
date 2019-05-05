@@ -86,7 +86,9 @@ export function PlaygroundEditor({
   const value = options.readOnly ? options.code.trim() : options.code;
 
   if (typeof window === "undefined" || !ready) {
-    return <pre className={className}>{value}</pre>;
+    return (
+      <pre className={className}>{options.readOnly ? value : `${value}\n`}</pre>
+    );
   }
 
   return (
