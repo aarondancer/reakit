@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { css, Global } from "@emotion/core";
+import { css } from "emotion";
+import { css as styled, Global } from "@emotion/core";
 import {
   VisuallyHidden,
   DialogDisclosure,
@@ -45,7 +46,7 @@ export default function Header({ transparent }: HeaderProps) {
 
   return (
     <header
-      css={css`
+      className={css`
         position: fixed;
         top: 0;
         left: 0;
@@ -93,7 +94,7 @@ export default function Header({ transparent }: HeaderProps) {
       `}
     >
       <Global
-        styles={css`
+        styles={styled`
           :root {
             --header-height: 60px;
           }
@@ -104,7 +105,7 @@ export default function Header({ transparent }: HeaderProps) {
         <DialogDisclosure
           {...dialog}
           unstable_system={{ palette: "background" }}
-          css={css`
+          className={css`
             font-size: 20px;
             padding: 8px;
             border-radius: 50%;
@@ -119,7 +120,7 @@ export default function Header({ transparent }: HeaderProps) {
           {...dialog}
           aria-label="Sidebar"
           unstable_hasTransition
-          css={css`
+          className={css`
             top: 0;
             left: 0;
             height: 100vh;
