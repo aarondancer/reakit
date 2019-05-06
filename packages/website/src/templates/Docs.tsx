@@ -16,6 +16,7 @@ import KeyboardInput from "../components/KeyboardInput";
 import Blockquote from "../components/Blockquote";
 import TestTube from "../icons/TestTube";
 import Heading from "../components/Heading";
+import SEO from "../components/SEO";
 
 type DocsProps = {
   data: {
@@ -124,6 +125,7 @@ export default function Docs({ data }: DocsProps) {
   } = data;
   return (
     <>
+      <SEO title={title} />
       <Heading>{title}</Heading>
       {renderAst(htmlAst)}
     </>

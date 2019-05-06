@@ -79,7 +79,7 @@ function Example() {
 
 State hooks are composable as well. For example, [`useTabState`](/docs/tab/) uses [`useRoverState`](/docs/rover/) underneath. You can take advantage of the same approach to create new fancy state hooks.
 
-```jsx { "maxHeight": "500px" }
+```jsx
 import React from "react";
 import { useHiddenState, Hidden, HiddenDisclosure } from "reakit";
 

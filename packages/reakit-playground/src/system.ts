@@ -175,7 +175,7 @@ export function usePlaygroundEditorProps(
 ): PlaygroundEditorProps {
   const primary = usePalette("primary") || "blue";
   const contrast = useContrast(primary);
-  const maxHeight = options.maxHeight ? options.maxHeight : "300px";
+  const maxHeight = options.maxHeight ? options.maxHeight : "auto";
   const playgroundEditor = css`
     margin: 2em 0;
     font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;

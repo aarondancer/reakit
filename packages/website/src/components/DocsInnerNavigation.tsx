@@ -4,7 +4,7 @@ import { unstable_useId } from "reakit/utils/useId";
 import { Button } from "reakit";
 import { css } from "emotion";
 import createUseContext from "constate";
-import { FaEdit, FaGithubAlt } from "react-icons/fa";
+import { FaEdit, FaGithub } from "react-icons/fa";
 import { usePalette, useLighten } from "reakit-system-palette/utils";
 import useLocation from "../hooks/useLocation";
 import Spacer from "./Spacer";
@@ -164,12 +164,12 @@ export default function DocsInnerNavigation({
       <useScrollSpyContext.Provider>
         <div className={className} key={title}>
           <Button as="a" href={sourceUrl} unstable_system={{ fill: "outline" }}>
-            <FaGithubAlt />
-            <Spacer mx={4} /> View on GitHub
+            <FaGithub />
+            <Spacer width={8} /> View on GitHub
           </Button>
           <Button as="a" href={readmeUrl} unstable_system={{ fill: "outline" }}>
             <FaEdit />
-            <Spacer mx={4} />
+            <Spacer width={8} />
             Edit this page
           </Button>
           <div hidden id={id}>

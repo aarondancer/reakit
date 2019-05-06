@@ -44,7 +44,7 @@ export function PlaygroundEditor({
   theme = "reakit",
   tabSize = 2,
   mode = "jsx",
-  maxHeight = "300px",
+  maxHeight,
   ...htmlProps
 }: PlaygroundEditorOptions & PlaygroundEditorProps) {
   const options = unstable_useOptions(

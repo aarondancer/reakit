@@ -46,6 +46,7 @@ export function useDialogProps(
     outline: 0;
     border: 1px solid ${borderColor};
     color: ${color};
+    overflow: auto;
 
     &:focus {
       box-shadow: 0 0 0 0.2em ${boxShadowColor};
