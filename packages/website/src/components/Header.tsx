@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import { css } from "emotion";
-import { css as styled, Global } from "@emotion/core";
+import { Global } from "@emotion/core";
 import {
   VisuallyHidden,
   DialogDisclosure,
@@ -34,6 +34,7 @@ function getLinkProps({ isPartiallyCurrent }: LinkGetProps) {
 }
 
 export default function Header({ transparent }: HeaderProps) {
+  const ref = React.useRef<HTMLDivElement>(null);
   const isLarge = useViewportWidthGreaterThan(780);
   const background = usePalette("background");
   const foreground = usePalette("foreground");
@@ -94,11 +95,11 @@ export default function Header({ transparent }: HeaderProps) {
       `}
     >
       <Global
-        styles={styled`
-          :root {
-            --header-height: 60px;
+        styles={{
+          ":root": {
+            "--header-height": "60px"
           }
-        `}
+        }}
       />
       <SkipToContent />
       <HiddenMediaQuery query="min-width: 781px">
@@ -118,8 +119,10 @@ export default function Header({ transparent }: HeaderProps) {
         <DialogBackdrop {...dialog} />
         <Dialog
           {...dialog}
+          ref={ref}
           aria-label="Sidebar"
           unstable_hasTransition
+          unstable_initialFocusRef={ref}
           className={css`
             top: 0;
             left: 0;
@@ -129,6 +132,7 @@ export default function Header({ transparent }: HeaderProps) {
             transform: translateX(0);
             transition: transform 250ms ease-in-out;
             border-radius: 0;
+            overflow: auto;
             &[aria-hidden="true"] {
               transform: translateX(-100%);
             }

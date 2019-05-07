@@ -375,6 +375,11 @@ Learn more in [Composition](/docs/composition/#props-hooks).
 
   Changes the `visible` state to `false`
 
+- **`unstable_hasTransition`** <span title="Experimental">⚠️</span>
+  <code>boolean | undefined</code>
+
+  TODO: Description
+
 - **`hideOnClickOutside`**
   <code>boolean | undefined</code>
 

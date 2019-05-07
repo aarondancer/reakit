@@ -71,6 +71,11 @@ Learn more in [Composition](/docs/composition/#props-hooks).
 
   Whether it's visible or not.
 
+- **`unstable_hasTransition`** <span title="Experimental">⚠️</span>
+  <code>boolean | undefined</code>
+
+  TODO: Description
+
 ### `HiddenDisclosure`
 
 - **`disabled`**

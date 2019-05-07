@@ -142,25 +142,23 @@ Reakit supports multiple nested modal dialogs and non-modal dialogs. <kbd>ESC</k
 import { useDialogState, Dialog, DialogDisclosure } from "reakit/Dialog";
 import { Button } from "reakit/Button";
 
-function Example(props) {
-  const dialog = useDialogState();
+function Example() {
+  const dialog1 = useDialogState();
+  const dialog2 = useDialogState();
   return (
     <>
-      <DialogDisclosure {...dialog}>
-        {props.modal === false ? "Open non-modal dialog" : "Open dialog"}
-      </DialogDisclosure>
-      <Dialog aria-label="Test" {...dialog} {...props}>
-        {props.modal === false ? (
-          <>
-            Tab me.
-            <Button onClick={dialog.hide}>Close non-modal dialog</Button>
-          </>
-        ) : (
-          <>
-            Press <kbd>ESC</kbd> to close me.
-            <Example modal={false} />
-          </>
-        )}
+      <DialogDisclosure {...dialog1}>Open dialog</DialogDisclosure>
+      <Dialog aria-label="Test" {...dialog1}>
+        <p>
+          Press <kbd>ESC</kbd> to close me.
+        </p>
+        <div style={{ display: "grid", gridGap: 16, gridAutoFlow: "column" }}>
+          <Button onClick={dialog1.hide}>Close dialog</Button>
+          <DialogDisclosure {...dialog2}>Open nested dialog</DialogDisclosure>
+        </div>
+        <Dialog aria-label="Nested" {...dialog2}>
+          <Button onClick={dialog2.hide}>Close nested dialog</Button>
+        </Dialog>
       </Dialog>
     </>
   );
@@ -241,6 +239,11 @@ Learn more in [Composition](/docs/composition/#props-hooks).
 
   Whether it's visible or not.
 
+- **`unstable_hasTransition`** <span title="Experimental">⚠️</span>
+  <code>boolean | undefined</code>
+
+  TODO: Description
+
 - **`hide`**
   <code>() =&#62; void</code>
 
@@ -303,6 +306,11 @@ It will be set to `false` if `modal` is `false`.
   <code>boolean</code>
 
   Whether it's visible or not.
+
+- **`unstable_hasTransition`** <span title="Experimental">⚠️</span>
+  <code>boolean | undefined</code>
+
+  TODO: Description
 
 ### `DialogDisclosure`
 

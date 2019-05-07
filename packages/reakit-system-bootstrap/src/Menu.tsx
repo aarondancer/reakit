@@ -111,7 +111,6 @@ export function useMenuProps(
   const menu = css`
     display: flex;
     border-radius: 0;
-    overflow: initial;
 
     &:not([aria-orientation="horizontal"]) > &[aria-orientation="vertical"] {
       margin-top: -0.3em;

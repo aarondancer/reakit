@@ -252,6 +252,11 @@ similarly to `readOnly` on form elements. In this case, only
 
   Whether it's visible or not.
 
+- **`unstable_hasTransition`** <span title="Experimental">⚠️</span>
+  <code>boolean | undefined</code>
+
+  TODO: Description
+
 - **`selectedId`**
   <code>string | null</code>
 
